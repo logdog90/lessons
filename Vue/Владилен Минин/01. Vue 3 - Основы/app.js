@@ -20,6 +20,11 @@ const App = {
         removeNote(i) {
             this.notes.splice(i, 1)
         }
+    },
+    computed: {
+        doubleCountComputed() {
+            return this.notes.length * 2
+        }
     }
 }
 
