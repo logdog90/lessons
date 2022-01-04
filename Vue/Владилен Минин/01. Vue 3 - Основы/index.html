@@ -16,6 +16,7 @@
             type="text" 
             :placeholder="placeholder" 
             v-model="inputValue"
+            @keypress="inputKeyPress"
           />
         </div>
         <button class="btn" @click="addNewNote">Добавить</button>
