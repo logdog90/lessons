@@ -23,7 +23,7 @@
         <hr>
         <ul class="list" v-if="notes.length !== 0">
           <li class="list-item" v-for="(note, i) in notes">
-            {{ note }}
+            {{ toUpperCase(note) }}
             <button class="btn danger" @click="removeNote(i)">Удалить</button>
           </li>
         </ul>
