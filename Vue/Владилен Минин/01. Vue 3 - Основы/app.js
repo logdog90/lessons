@@ -11,6 +11,9 @@ const App = {
         addNewNote() {
             this.notes.push(this.inputValue)
             this.inputValue = ''
+        },
+        removeNote(i) {
+            this.notes.splice(i, 1)
         }
     }
 }
