@@ -18,7 +18,11 @@
             v-model="inputValue"
           />
         </div>
-        <p>{{ inputValue }}</p>
+        <button class="btn" @click="addNewNote">Добавить</button>
+        <hr>
+        <ul class="list">
+          <li class="list-item" v-for="note in notes">{{ note }}</li>
+        </ul>
       </div>
     </div>
 

@@ -3,8 +3,16 @@ const App = {
         return {
             title: 'Список заметок',
             placeholder: 'Введите название заметки',
-            inputValue: ''
+            inputValue: '',
+            notes: []
         }
+    },
+    methods: {
+        addNewNote() {
+            this.notes.push(this.inputValue)
+            this.inputValue = ''
+        }
+
     }
 }
 
