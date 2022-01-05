@@ -5,10 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Основы vue</title>
   <link rel="stylesheet" href="theme.css" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="container pt-5" id="app">
-    
+  <div class="container pt-5" id="app" v-cloak>
+    <div class="card center">
+      <div v-html="myHtml"></div> <!-- Передача модели в html-формате -->
+      <h2 v-text="title"></h2> <!-- Вместо интерполяции, передача модели через директиву -->
+      <h2 v-once="title">{{ title }}</h2> <!-- Передача модели один раз! -->
+      <h2 v-pre="title">{{ title }}</h2> <!-- Передача модели, в исходном виде. (Модель не компилируется!) -->
+      <button 
+        class="btn" 
+        @click="title = 'Передача модели один раз!'"
+      >Изменить заголовок</button>
+    </div>
   </div>
 
   <script src="https://unpkg.com/vue@next"></script>
