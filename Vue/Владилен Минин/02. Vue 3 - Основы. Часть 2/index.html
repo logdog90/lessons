@@ -23,7 +23,7 @@
         class="btn" 
         @click="title = 'Передача модели один раз!'"
       >Изменить заголовок</button> -->
-      <ul class="list">
+      <ul class="list" v-if="items.length">
         <li 
           class="list-item" 
           v-for="(item, i) in items"
@@ -35,6 +35,8 @@
           <strong>{{ key }}</strong>{{ value }}
         </li> -->
       </ul>
+      <h3 v-else>Элементы отсутствуют</h3> <!-- При соблюдение этого условия, этот заголовок удаляется из DOM-дерева! -->
+      <!-- <h3 v-show>Элементы отсутствуют</h3> -->
     </div>
   </div>
 
