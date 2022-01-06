@@ -1,16 +1,58 @@
-const data = {
-	message: "серенький козлик",
-	title: "Жил-был у бабушке серенький козлик",
-}
+const h = Vue.h
 
-const proxy = new Proxy(data, {
-	set(target, key, value) {
-		if (key === 'message') {
-			target.title = 'Жил-был у бабушке ' + value
+const app = Vue.createApp({
+	data: () => ({
+		title: 'Это из свойства template'
+	}),
+
+	methods: {
+		changeTitle() {
+			this.title = 'Изменили!'
 		}
-		target[key] = value
+	},
+
+	render() {
+		return h('div', { class: 'card center' }, [
+			h('h1', {}, this.title),
+			h(
+				'button',
+				{
+					class: 'btn',
+					onClick: this.changeTitle
+				},
+				'Изменить'
+			)
+		])
+	},
+
+	beforeCreate() {
+		console.log('beforeCreate')
+	},
+	created() {
+		console.log('created')
+	},
+	beforeMount() {
+		console.log('beforeMount');
+	},
+	mounted() {
+		console.log('mounted');
+	},
+	beforeUnmount() {
+		console.log('beforeUnmount');
+	},
+	unmounted() {
+		console.log('unmounted');
+	},
+	beforeUpdate() {
+		console.log('beforeUpdate');
+	},
+	updated() {
+		console.log('updated');
 	}
 })
 
-proxy.message = 'серенький ослик'
-console.log(proxy)
+app.mount('#app')
+
+// setTimeout(() => {
+// 	app.unmount()
+// }, 2000)
