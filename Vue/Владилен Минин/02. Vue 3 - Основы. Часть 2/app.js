@@ -18,7 +18,7 @@ Vue.createApp({
       this.items.splice(i, 1)
     },
     log(item) {
-      console.log('Log item: ', item)
+      console.log('Вывод item: ', item)
     }
   },
   computed: {
