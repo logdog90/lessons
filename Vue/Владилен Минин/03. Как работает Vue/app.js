@@ -56,3 +56,11 @@ app.mount('#app')
 // setTimeout(() => {
 // 	app.unmount()
 // }, 2000)
+
+Vue.createApp({
+	data() {
+		return {
+			title: 'Заголовок приложения 2'
+		}
+	}
+}).mount('#app2')
