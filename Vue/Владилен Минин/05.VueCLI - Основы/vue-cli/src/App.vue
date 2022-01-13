@@ -5,8 +5,10 @@
     </div>
     <app-news 
       v-for="item in news"
-      :key="item"
-      :title="item"
+      :key="item.id"
+      :id="item.id"
+      :title="item.title"
+      :is-open="item.isOpen"
     >
     </app-news>
   </div>
@@ -22,9 +24,21 @@ export default {
     return {
       now: new Date().toLocaleDateString(),
       news: [
-        'Молодой кавалер Надежды Бабкиной научился ходить на горшок и говорить слово - Надя!',
-        'Дети Виктора Рыбина и Натальи Сентчаковой пропахли селёдкой!',
-        'Зоофил снимет зооферму!'
+        {
+          id: 1,
+          title: 'Молодой кавалер Надежды Бабкиной научился ходить на горшок и говорить слово - Надя!',
+          isOpen: false
+        },
+        {
+          id: 2,
+          title: 'Дети Виктора Рыбина и Натальи Сентчаковой пропахли селёдкой!',
+          isOpen: false
+        },
+        {
+          id: 3,
+          title: 'Зоофил снимет зооферму!',
+          isOpen: false
+        }
       ]
     };
   }

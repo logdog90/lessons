@@ -13,11 +13,26 @@
 
 <script>
 export default {
-  props: ['title'],
+  props: {
+    id: {
+      type: Number,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    isOpen: {
+      type: Boolean,
+      required: false,
+      default: false,
+      validator(value) {
+        return value === true || value === false
+      }
+    }
+  },
 	data() {
-		return {
-			isOpen: false
-		}
+		return {}
 	}
 }
 </script>
