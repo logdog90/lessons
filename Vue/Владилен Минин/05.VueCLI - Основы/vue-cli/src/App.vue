@@ -2,7 +2,7 @@
   <div class="container pt-1">
     <div class="card">
       <h2>Актуальные новости {{ now }}</h2>
-      <span>Открыто: {{ openRate }}</span>
+      <span>Открыто: <strong>{{ openRate }}</strong> | Прочитано: <strong>{{ readRate }}</strong></span>
     </div>
     <app-news 
       v-for="item in news"
@@ -10,7 +10,10 @@
       :id="item.id"
       :title="item.title"
       :is-open="item.isOpen"
+      :was-read="item.wasRead"
       @open-news="openNews"
+      @read-news="readNews"
+      @unmark="unreadNews"
     >
     </app-news>
   </div>
@@ -26,21 +29,25 @@ export default {
     return {
       now: new Date().toLocaleDateString(),
       openRate: 0,
+      readRate: 0,
       news: [
         {
           id: 1,
           title: 'Молодой кавалер Надежды Бабкиной научился ходить на горшок и говорить слово - Надя!',
-          isOpen: false
+          isOpen: false,
+          wasRead: false
         },
         {
           id: 2,
           title: 'Дети Виктора Рыбина и Натальи Сентчаковой пропахли селёдкой!',
-          isOpen: false
+          isOpen: false,
+          wasRead: false
         },
         {
           id: 3,
           title: 'Зоофил снимет зооферму!',
-          isOpen: false
+          isOpen: false,
+          wasRead: false
         }
       ]
     };
@@ -48,6 +55,16 @@ export default {
   methods: {
     openNews() {
       this.openRate++
+    },
+    readNews(id) {
+      const idx = this.news.findIndex(news => news.id === id)
+      this.news[idx].wasRead = true
+      this.readRate++
+    },
+    unreadNews(id) {
+      const news = this.news.find(news => news.id === id)
+      news.wasRead = false
+      this.readRate--
     }
   }
 };
