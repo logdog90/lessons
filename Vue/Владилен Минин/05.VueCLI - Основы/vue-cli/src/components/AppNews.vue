@@ -36,6 +36,16 @@ export default {
       }
     }
   },
+  // emits: ['open-news'],
+  emits: {
+    'open-news'(num) {
+      if(num) {
+        return true
+      }
+      console.warn('No data in open-news emit');
+      return false
+    }
+  },
 	data() {
 		return {
       isNewOpen: this.isOpen
@@ -45,7 +55,7 @@ export default {
     open() {
       this.isNewOpen = !this.isNewOpen
       if (this.isNewOpen) {
-        this.$emit('open-news')
+        this.$emit('open-news', 42)
       }
     }
   }
